@@ -24,7 +24,7 @@ import java.util.Optional;
 import static com.lee.pet_store.testUtil.MockUtils.mockCustomer1;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static reactor.core.publisher.Mono.when;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @ContextConfiguration(classes = {PetStoreProfilesController.class, AccountManagementService.class})

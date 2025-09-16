@@ -22,7 +22,7 @@ public class CustomerDAO {
     public Optional<List<Customer>> getAllCustomers() {
         List<CustomerEntity> customers = new ArrayList<>();
         customerRepository.findAll().forEach(customers::add);
-        log.info("DAO: Retrieved {} customers: {} from customerRepository",  entityListToCustomerList(customers).size(), customers);
+        log.info("DAO: Retrieved {} customers: {} from customerRepository", Optional.of(entityListToCustomerList(customers).size()), customers);
         return Optional.of(entityListToCustomerList(customers));
     }
 
