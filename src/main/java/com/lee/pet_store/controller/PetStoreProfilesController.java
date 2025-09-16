@@ -90,4 +90,24 @@ public class PetStoreProfilesController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PostMapping
+    public ResponseEntity<Object> addPet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @PutMapping
+    public ResponseEntity<Object> updatePet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @GetMapping
+    public ResponseEntity<Object> getPet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Object> deletePet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
