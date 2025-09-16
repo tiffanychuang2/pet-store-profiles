@@ -1,0 +1,68 @@
+application:
+server:
+  port: 8080
+  servlet:
+    context-path: /api/pet-store
+spring:
+  application:
+    name: pet-store
+  config:
+    import: "optional:configserver:"
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+      database-platform: org.hibernate.dialect.H2Dialect
+#    autoconfigure:
+#      exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  threads:
+    virtual:
+      enabled: true
+  cloud:
+    config:
+      uri: http://localhost:8080
+      server:
+        git:
+#          uri: http://github.com/.../application.yml
+  kafka:
+    heartbeat:
+      interval:
+        ms: 5000
+    bootstrap-servers: localhost:9092
+    topic:
+      pet-store-topic: pet-store-profiles
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: pet-store
+      auto-offset-reset: earliest
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.trusted.packages: '*'
+  security:
+    basic:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics
+  endpoint:
+    metrics:
+      access: unrestricted
+  tracing:
+    enabled: false
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
