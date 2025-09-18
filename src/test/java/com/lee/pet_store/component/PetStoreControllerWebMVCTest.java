@@ -59,7 +59,7 @@ public class PetStoreControllerWebMVCTest {
 
         @Test
         void when_updateCustomer_is_called_customer_is_updated() throws Exception {
-            Customer customerUpdate = MockUtils.mockCustomer3Update();
+            Customer customerUpdate = MockUtils.mockCustomer1UpdateTo3();
 
             when(accountManagementService.updateCustomer(customerUpdate)).thenReturn(customerUpdate);
 

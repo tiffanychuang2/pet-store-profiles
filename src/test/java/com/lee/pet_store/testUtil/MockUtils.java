@@ -1,5 +1,7 @@
 package com.lee.pet_store.testUtil;
 
+import com.lee.pet_store.dao.CustomerEntity;
+import com.lee.pet_store.dao.PetEntity;
 import com.lee.pet_store.model.Customer;
 import com.lee.pet_store.model.Pet;
 
@@ -107,7 +109,7 @@ public class MockUtils {
             )
     );
 
-    public static Customer mockCustomer3Update() {
+    public static Customer mockCustomer1UpdateTo3() {
         return Customer.builder()
                 .loyaltyId(LOYALTY_ID_1)
                 .firstName(FIRST_NAME_3)
@@ -116,6 +118,68 @@ public class MockUtils {
                 .address(ADDRESS_3)
                 .pets(List.of(mockPet1()))
                 .balance(BALANCE_3)
+                .build();
+    }
+
+    public static CustomerEntity mockCustomerEntity1() {
+        return CustomerEntity.builder()
+                .loyaltyId(LOYALTY_ID_1)
+                .firstName(FIRST_NAME_1)
+                .lastName(LAST_NAME_1)
+                .phoneNumber(PHONE_NUMBER_1)
+                .address(ADDRESS_1)
+                .pets(List.of(mockPetEntity1()))
+                .balance(BALANCE_1)
+                .build();
+    }
+
+    public static CustomerEntity mockCustomerEntity2() {
+        return CustomerEntity.builder()
+                .loyaltyId(LOYALTY_ID_2)
+                .firstName(FIRST_NAME_2)
+                .lastName(LAST_NAME_2)
+                .phoneNumber(PHONE_NUMBER_2)
+                .address(ADDRESS_2)
+                .pets(List.of(mockPetEntity1()))
+                .balance(BALANCE_2)
+                .build();
+    }
+
+    public static CustomerEntity mockCustomerEntity3() {
+        return CustomerEntity.builder()
+                .loyaltyId(LOYALTY_ID_3)
+                .firstName(FIRST_NAME_3)
+                .lastName(LAST_NAME_3)
+                .phoneNumber(PHONE_NUMBER_3)
+                .address(ADDRESS_3)
+                .pets(List.of(mockPetEntity1()))
+                .balance(BALANCE_3)
+                .build();
+    }
+
+    public static CustomerEntity mockCustomerEntity1UpdateTo3() {
+        return CustomerEntity.builder()
+                .loyaltyId(LOYALTY_ID_1)
+                .firstName(FIRST_NAME_3)
+                .lastName(LAST_NAME_3)
+                .phoneNumber(PHONE_NUMBER_2)
+                .address(ADDRESS_3)
+                .pets(List.of(mockPetEntity1()))
+                .balance(BALANCE_3)
+                .build();
+    }
+
+    public static List<CustomerEntity> mockCustomerEntitiesList =
+            new ArrayList<>(Arrays.asList(
+                    MockUtils.mockCustomerEntity1(),
+                    MockUtils.mockCustomerEntity2(),
+                    MockUtils.mockCustomerEntity3()
+            ));
+
+    public static PetEntity mockPetEntity1() {
+        return PetEntity.builder()
+                .petType(PET_TYPE_DOG)
+                .petName(PET_NAME_1)
                 .build();
     }
 }

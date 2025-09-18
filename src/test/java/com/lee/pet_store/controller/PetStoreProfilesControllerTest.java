@@ -108,7 +108,7 @@ public class PetStoreProfilesControllerTest {
         @Test
         void updateCustomer_happy_path() {
             String mock1LoyaltyId = MockUtils.mockCustomer1().getLoyaltyId();
-            Customer updatedCustomer = MockUtils.mockCustomer3Update();
+            Customer updatedCustomer = MockUtils.mockCustomer1UpdateTo3();
             Customer actualCustomer = MockUtils.mockCustomer1();
 
             when(accountManagementService.updateCustomer(updatedCustomer)).thenReturn(actualCustomer);
