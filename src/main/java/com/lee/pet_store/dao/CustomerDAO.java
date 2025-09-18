@@ -69,7 +69,8 @@ public class CustomerDAO {
                     customerRepository.delete(foundCustomer);
                     customerRepository.save(customerToEntity(customerUpdate));
                     log.info("DAO: Customer update saved: {}", entityToCustomer(foundCustomer).toString());
-                    return foundCustomer;
+                    return customerToEntity(customerUpdate);
+//                    return foundCustomer;
                 })
                 .orElseThrow(() -> new NoSuchElementException("Customer with loyalty ID " + loyaltyId + " not found."));
         log.info("DAO: Customer updated and saved: {}",  entityToCustomer(customer).toString());

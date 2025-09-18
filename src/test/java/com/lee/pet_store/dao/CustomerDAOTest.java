@@ -111,23 +111,22 @@ public class CustomerDAOTest {
             assertEquals(updatedCustomer.getPets().size(), updatedEntity.getPets().size());
         }
 
-//        @Test
-//        void update_returns_updated_customer_object() {
-//            CustomerEntity existingEntity = mockCustomerEntity1();
-//            String loyaltyId = existingEntity.getLoyaltyId();
-//            Customer customerUpdate = mockCustomer1UpdateTo3();
-//            CustomerEntity updatedEntity = mockCustomerToEntity(customerUpdate);
-//
-//            when(customerRepository.findByLoyaltyId(loyaltyId)).thenReturn(existingEntity);
-//            when(customerRepository.save(any(CustomerEntity.class))).thenReturn(updatedEntity);
-//
-//            Customer actualResult = customerDAO.update(customerUpdate);
-//
-//            assertEquals(customerUpdate, actualResult);
-//            verify(customerRepository).delete(existingEntity);
-//            verify(customerRepository).save(updatedEntity);
-//            verify(customerRepository).findByLoyaltyId(loyaltyId);
-//        }
+        @Test
+        void update_returns_updated_customer_object() {
+            Customer mockCustomerUpdate = mockCustomer1UpdateTo3();
+            String loyaltyId = mockCustomerUpdate.getLoyaltyId();
+            CustomerEntity mockOriginalCustomerEntity1 = mockCustomerEntity1();
+
+            when(customerRepository.findByLoyaltyId(loyaltyId)).thenReturn(mockOriginalCustomerEntity1);
+            when(customerRepository.save(any(CustomerEntity.class))).thenReturn(mockCustomerToEntity(mockCustomerUpdate));
+
+            Customer actualUpdatedCustomer = customerDAO.update(mockCustomerUpdate);
+
+            verify(customerRepository).findByLoyaltyId(loyaltyId);
+            verify(customerRepository).delete(mockOriginalCustomerEntity1);
+            verify(customerRepository).save(any(CustomerEntity.class));
+            assertEquals(mockCustomerUpdate, actualUpdatedCustomer);
+        }
     }
 
     public static Customer mockEntityToCustomer(CustomerEntity entity) {
